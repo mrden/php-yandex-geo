@@ -4,7 +4,7 @@
     "description": "PHP-library for interactions with geo-coding Yandex.Maps",
     "version": "2.0.0",
     "keywords": ["api", "yandex", "geo", "geocode", "geocoder", "maps"],
-    "license": "The MIT License (MIT)",
+    "license": "MIT",
     "authors": [
         {
             "name": "Dmitry Kuznetsov",
