@@ -1,5 +1,5 @@
 {
-    "name": "yandex/geo",
+    "name": "mrden/yandex-geo",
     "type": "library",
     "description": "PHP-library for interactions with geo-coding Yandex.Maps",
     "keywords": ["api", "yandex", "geo", "geocode", "geocoder", "maps"],
@@ -9,19 +9,30 @@
             "name": "Dmitry Kuznetsov",
             "email": "kuznetsov2d@gmail.com",
             "homepage": "http://kuznetsov.io"
+        },
+        {
+            "name": "Denis Kiselev",
+            "email": "kiselevden911@yandex.ru",
+            "role": "Contributer"
         }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": "^8.0",
+        "ext-curl": "*"
     },
     "autoload": {
-        "psr-0": {
-            "Yandex\\Geo": "source/"
+        "psr-4": {
+            "Yandex\\Geo\\": "src/"
         }
     },
-    "support": {
-        "source": "https://github.com/yandex-php/php-yandex-geo",
-        "issues": "https://github.com/yandex-php/php-yandex-geo/issues",
-        "wiki": "https://github.com/yandex-php/php-yandex-geo"
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.49",
+        "vimeo/psalm": "^5.22",
+        "phpunit/phpunit": "^10.5"
     }
 }

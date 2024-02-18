@@ -9,48 +9,44 @@ namespace Yandex\Geo;
 class Response
 {
     /**
-     * @var \Yandex\Geo\GeoObject[]
+     * @var GeoObject[]
      */
-    protected $_list = array();
+    protected array $_list = [];
     /**
      * @var array
      */
-    protected $_data;
+    protected array $_data;
 
     public function __construct(array $data)
     {
         $this->_data = $data;
         if (isset($data['response']['GeoObjectCollection']['featureMember'])) {
             foreach ($data['response']['GeoObjectCollection']['featureMember'] as $entry) {
-                $this->_list[] = new \Yandex\Geo\GeoObject($entry['GeoObject']);
+                $this->_list[] = new GeoObject($entry['GeoObject']);
             }
         }
     }
 
     /**
      * Исходные данные
-     * @return array
      */
-    public function getData()
+    public function getData(): array
     {
         return $this->_data;
     }
 
     /**
-     * @return \Yandex\Geo\GeoObject[]
+     * @return GeoObject[]
      */
-    public function getList()
+    public function getList(): array
     {
         return $this->_list;
     }
 
-    /**
-     * @return null|GeoObject
-     */
-    public function getFirst()
+    public function getFirst(): ?GeoObject
     {
         $result = null;
-        if (count($this->_list)) {
+        if (\count($this->_list)) {
             $result = $this->_list[0];
         }
 
@@ -59,9 +55,8 @@ class Response
 
     /**
      * Возвращает исходный запрос
-     * @return string|null
      */
-    public function getQuery()
+    public function getQuery(): ?string
     {
         $result = null;
         if (isset($this->_data['response']['GeoObjectCollection']['metaDataProperty']['GeocoderResponseMetaData']['request'])) {
@@ -72,11 +67,10 @@ class Response
 
     /**
      * Кол-во найденных результатов
-     * @return int
      */
-    public function getFoundCount()
+    public function getFoundCount(): int
     {
-        $result = null;
+        $result = 0;
         if (isset($this->_data['response']['GeoObjectCollection']['metaDataProperty']['GeocoderResponseMetaData']['found'])) {
             $result = (int)$this->_data['response']['GeoObjectCollection']['metaDataProperty']['GeocoderResponseMetaData']['found'];
         }
@@ -85,9 +79,8 @@ class Response
 
     /**
      * Широта в градусах. Имеет десятичное представление с точностью до семи знаков после запятой
-     * @return float|null
      */
-    public function getLatitude()
+    public function getLatitude(): ?float
     {
         $result = null;
         if (isset($this->_data['response']['GeoObjectCollection']['metaDataProperty']['GeocoderResponseMetaData']['Point']['pos'])) {
@@ -99,9 +92,8 @@ class Response
 
     /**
      * Долгота в градусах. Имеет десятичное представление с точностью до семи знаков после запятой
-     * @return float|null
      */
-    public function getLongitude()
+    public function getLongitude(): ?float
     {
         $result = null;
         if (isset($this->_data['response']['GeoObjectCollection']['metaDataProperty']['GeocoderResponseMetaData']['Point']['pos'])) {

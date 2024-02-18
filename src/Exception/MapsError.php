@@ -8,5 +8,4 @@ namespace Yandex\Geo\Exception;
  */
 class MapsError extends \Yandex\Geo\Exception
 {
-
 }
