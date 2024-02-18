@@ -2,13 +2,14 @@
     "name": "mrden/yandex-geo",
     "type": "library",
     "description": "PHP-library for interactions with geo-coding Yandex.Maps",
+    "version": "2.0.0",
     "keywords": ["api", "yandex", "geo", "geocode", "geocoder", "maps"],
     "license": "The MIT License (MIT)",
     "authors": [
         {
             "name": "Dmitry Kuznetsov",
             "email": "kuznetsov2d@gmail.com",
-            "homepage": "http://kuznetsov.io"
+            "role": "Developer"
         },
         {
             "name": "Denis Kiselev",
