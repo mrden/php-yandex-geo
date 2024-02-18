@@ -63,11 +63,11 @@ class Api
             \http_build_query($this->_filters)
         );
         $curl = \curl_init($apiUrl);
-        $options += array(
+        $options += [
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_HTTPGET => 1,
             CURLOPT_FOLLOWLOCATION => 1,
-        );
+        ];
         \curl_setopt_array($curl, $options);
         $data = \curl_exec($curl);
         $code = \curl_getinfo($curl, CURLINFO_HTTP_CODE);
@@ -87,7 +87,7 @@ class Api
             throw new Exception($msg);
         }
         if (!empty($data['error'])) {
-            throw new MapsError($data['error']['message'], $data['error']['code']);
+            throw new MapsError($data['error'], $data['statusCode'] ?? 0);
         }
 
         $this->_response = new Response($data);
